@@ -1,15 +1,28 @@
 import React , { Component } from 'react';
+import Module from './module'
 
-export default class Module extends Component {
+export default class Course extends Component {
     render() {
+        let list = this.props.modules.map(
+            (module, index) => <Module key={index} description={module} />
+        );
         return (
-            <tr>
-                <td>{this.props.description.name}</td>
-                <td>{this.props.description.noLectures}</td>
-                <td>{this.props.description.noPracticals}</td>
-            </tr>
+            <div>
+                <h1>{`${this.props.title} modules table`} </h1>
+                <table className="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>No lectures</th>
+                        <th>No practicals</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    {list}
+                    </tbody >
+                </table>
+            </div>
         );
     }
 
 }
-
